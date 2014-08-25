@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # To download and run
-# wget  && bash root.sh
+# wget https://raw.githubusercontent.com/masline/scripts/master/root.sh && bash root.sh
 
 # Setup persistent iptables to survive reboot
 echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
