@@ -25,10 +25,6 @@ iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 
-# Allow anything over loopback
-iptables -A INPUT -i lo -j ACCEPT
-iptables -A OUTPUT -o lo -j ACCEPT
-
 # Allows all outbound traffic
 iptables -A OUTPUT -j ACCEPT
 
