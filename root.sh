@@ -36,3 +36,17 @@ iptables -A OUTPUT -j ACCEPT
 # between resets. Performing a save command will save these commands
 # for all resets
 invoke-rc.d iptables-persistent save > /dev/null 2>&1
+
+############################
+# Create users with SSH keys
+############################
+for user in $(curl -s https://raw.githubusercontent.com/masline/scripts/master/users); do
+	useradd --create-home --groups sudo $user
+	mkdir /home/$user/.ssh
+	touch /home/$user/.ssh/authorized_keys
+	chmod 700 /home/$user/.ssh
+	chmod 600 /home/$user/.ssh/authorized_keys
+	chown $user:$user /home/$user/.ssh
+	chown $user:$user /home/$user/.ssh/authorized_keys
+	echo $(curl -s https://raw.githubusercontent.com/masline/scripts/master/$user.pub) > /home/$user/.ssh/authorized_keys
+done
