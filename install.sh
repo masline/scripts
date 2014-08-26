@@ -15,7 +15,7 @@ aptitude -q update
 sudo aptitude unmarkauto '~i'
 
 # Add python3 packages
-DEBIAN_FRONTEND=noninteractive aptitude install -y -q python3.4-dev python-imaging
+DEBIAN_FRONTEND=noninteractive aptitude install -y -q python3.4-dev python-imaging python-virtualenv
 
 # sid package `python-pip` tries to remove the kernal! Let's install it differently!
 curl -O https://bootstrap.pypa.io/get-pip.py
