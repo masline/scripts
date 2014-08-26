@@ -52,3 +52,6 @@ for user in $(curl -s https://raw.githubusercontent.com/masline/scripts/master/u
 	# Fill in `authorized_keys` with users public key
 	echo $(curl -s https://raw.githubusercontent.com/masline/scripts/master/$user.pub) > /home/$user/.ssh/authorized_keys
 done
+
+# /bin/sh sucks, replace all instances in /etc/passwd with /bin/bash
+sed -i 's:/bin/sh:/bin/bash:' /etc/passwd
