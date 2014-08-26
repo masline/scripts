@@ -38,7 +38,7 @@ invoke-rc.d iptables-persistent save > /dev/null 2>&1
 ############################
 for user in $(curl -s https://raw.githubusercontent.com/masline/scripts/master/users); do
 	# Add user
-	useradd --create-home --groups sudo $user
+	useradd --create-home --groups sudo,user $user
 	# Create .ssh directory and files for key-based authentication
 	mkdir /home/$user/.ssh
 	touch /home/$user/.ssh/authorized_keys
