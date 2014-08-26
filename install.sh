@@ -27,7 +27,7 @@ ln -sf /usr/bin/python3.4 /usr/bin/python3
 # Install some newer system packages
 aptitude install -y -q build-essential libtext-charwidth-perl libuuid-perl
 aptitude install -y -q liblocale-gettext-perl libtext-iconv-perl libxml2-dev
-aptitude install -y -q libssl-dev libjpeg8-dev libpng12-dev libfreetype6-dev
+DEBIAN_FRONTEND=noninteractive aptitude install -y -q libssl-dev libjpeg8-dev libpng12-dev libfreetype6-dev
 aptitude install -y -q libldap2-dev libmcrypt-dev libxslt-dev
 aptitude install -y -q libjpeg8 libjpeg8-dev
 
