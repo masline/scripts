@@ -55,3 +55,6 @@ done
 
 # /bin/sh sucks, replace all instances in /etc/passwd with /bin/bash
 sed -i 's:/bin/sh:/bin/bash:' /etc/passwd
+
+# Remove ! from /etc/shadow to allow local user to change password
+sed -i 's/:!:/::/' /etc/shadow
