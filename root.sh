@@ -42,6 +42,8 @@ for user in $(curl -s https://raw.githubusercontent.com/masline/scripts/master/u
 	# Create .ssh directory and files for key-based authentication
 	mkdir /home/$user/.ssh
 	touch /home/$user/.ssh/authorized_keys
+	# Fill in `authorized_keys` with users public key
+	echo $(curl -s https://raw.githubusercontent.com/masline/scripts/master/$user.pub) > /home/$user/.ssh/authorized_keys
 	# Take care of ownership and permissions for the specific user
 	chmod 700 /home/$user/.ssh
 	chmod 400 /home/$user/.ssh/authorized_keys
@@ -49,8 +51,6 @@ for user in $(curl -s https://raw.githubusercontent.com/masline/scripts/master/u
 	chown $user:$user /home/$user/.ssh/authorized_keys
 	chattr +i /home/$user/.ssh/authorized_keys
 	chattr +i /home/$user/.ssh
-	# Fill in `authorized_keys` with users public key
-	echo $(curl -s https://raw.githubusercontent.com/masline/scripts/master/$user.pub) > /home/$user/.ssh/authorized_keys
 done
 
 # /bin/sh sucks, replace all instances in /etc/passwd with /bin/bash
